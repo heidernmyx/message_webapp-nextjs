@@ -1,0 +1,84 @@
+{
+    user: {
+      id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+      aud: 'authenticated',
+      role: 'authenticated',
+      email: 'hmontejo123@gmail.com',
+      email_confirmed_at: '2024-06-26T02:31:00.176245753Z',
+      phone: '',
+      last_sign_in_at: '2024-06-26T02:31:00.180126434Z',
+      app_metadata: { provider: 'email', providers: [ 'email' ] },
+      user_metadata: {
+        email: 'hmontejo123@  gmail.com',
+        email_verified: false,
+        phone_verified: false,
+        sub: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8'
+      },
+      identities: [
+        {
+          identity_id: 'ef9d5a14-385f-4ac9-af4f-2ca467909442',
+          id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+          user_id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+          identity_data: {
+            email: 'hmontejo123@gmail.com',
+            email_verified: false,
+            phone_verified: false,
+            sub: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8'
+          },
+          provider: 'email',
+          last_sign_in_at: '2024-06-26T02:31:00.170577791Z',
+          created_at: '2024-06-26T02:31:00.170635Z',
+          updated_at: '2024-06-26T02:31:00.170635Z',
+          email: 'hmontejo123@gmail.com'
+        }
+      ],
+      created_at: '2024-06-26T02:31:00.165046Z',
+      updated_at: '2024-06-26T02:31:00.182682Z',
+      is_anonymous: false
+    },
+    session: {
+      access_token: 
+        'eyJhbGciOiJIUzI1NiIsImtpZCI6Iko0REcrbzhaOGQ4VUlMcVIiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzE5MzcyNjYwLCJpYXQiOjE3MTkzNjkwNjAsImlzcyI6Imh0dHBzOi8vcWVodXZjenZhemd0Y3hqd2xrZHEuc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjBlOWQxNjg1LTU3MGMtNDIxNC04YWI4LWJiNGI0ZTc2N2NkOCIsImVtYWlsIjoiaG1vbnRlam8xMjNAZ21haWwuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbCI6Imhtb250ZWpvMTIzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfdmVyaWZpZWQiOmZhbHNlLCJzdWIiOiIwZTlkMTY4NS01NzBjLTQyMTQtOGFiOC1iYjRiNGU3NjdjZDgifSwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJhYWwiOiJhYWwxIiwiYW1yIjpbeyJtZXRob2QiOiJwYXNzd29yZCIsInRpbWVzdGFtcCI6MTcxOTM2OTA2MH1dLCJzZXNzaW9uX2lkIjoiYmQzNzc3ODQtY2I4Ny00Y2MxLTg0OTAtYmEwMDNlMTQwMWM4IiwiaXNfYW5vbnltb3VzIjpmYWxzZX0.Ab8SUXEn3q0B2n0vCkdNc3Zd_pfde62q3fLCpakRBYQ',
+      token_type: 'bearer',
+      expires_in: 3600,
+      expires_at: 1719372660,
+      refresh_token: 'sBnMunFR0xq-cXTmM3gOLw',
+      user: {
+        id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+        aud: 'authenticated',
+        role: 'authenticated',
+        email: 'hmontejo123@gmail.com',
+        email_confirmed_at: '2024-06-26T02:31:00.176245753Z',
+        phone: '',
+        last_sign_in_at: '2024-06-26T02:31:00.180126434Z',
+        app_metadata: { provider: 'email', providers: [ 'email' ] },
+        user_metadata: {
+          email: 'hmontejo123@gmail.com',
+          email_verified: false,
+          phone_verified: false,
+          sub: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8'
+        },
+        identities: [
+          {
+            identity_id: 'ef9d5a14-385f-4ac9-af4f-2ca467909442',
+            id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+            user_id: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8',
+            identity_data: {
+              email: 'hmontejo123@gmail.com',
+              email_verified: false,
+              phone_verified: false,
+              sub: '0e9d1685-570c-4214-8ab8-bb4b4e767cd8'
+            },
+            provider: 'email',
+            last_sign_in_at: '2024-06-26T02:31:00.170577791Z',
+            created_at: '2024-06-26T02:31:00.170635Z',
+            updated_at: '2024-06-26T02:31:00.170635Z',
+            email: 'hmontejo123@gmail.com'
+          }
+        ],
+        created_at: '2024-06-26T02:31:00.165046Z',
+        updated_at: '2024-06-26T02:31:00.182682Z',
+        is_anonymous: false
+      }
+    }
+  }
