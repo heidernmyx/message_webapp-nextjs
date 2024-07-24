@@ -19,8 +19,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (pathname === '/login' || pathname === '/register') {
-    console.log('login with access token')
-    const result = accessToken ? NextResponse.redirect(new URL('/dashboard', req.url)) : console.log("shit")
+    const result = accessToken ? NextResponse.redirect(new URL('/dashboard', req.url)) : console.log('no access token')
     return result
   }
 

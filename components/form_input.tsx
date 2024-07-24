@@ -2,7 +2,7 @@
 import React, { Component, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import {
   Select,
   SelectContent,
@@ -24,20 +24,20 @@ import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import FormTitle from '../components/form_title';
+import { registerSchema } from '@/lib/zod';
 import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'
 
-const registerSchema = z.object({
-  username: z.string().min(4, 'Username must at least have 4 characters'),
-  password: z.string().min(4, 'Password must at least have 4 characters')
-})
+type formFields = z.infer<typeof registerSchema>
 
 const Form_input = () => {
-  const { register, setValue, handleSubmit, formState: { errors } } = useForm()
-
+  const { register, setValue, handleSubmit, formState: { errors } } = useForm<formFields>({
+    resolver: zodResolver(registerSchema)
+  })
 
   const [ registerMessage, setRegMessage ] = useState("");
   
-  const Register = async (data: any) => {
+  const Register: SubmitHandler<formFields> = async (data: any) => {
     console.log("Form submitted", data);
     
     try {
@@ -90,7 +90,7 @@ const Form_input = () => {
       <Label>First name</Label>
       <Input className="mt-[1vh]" type='text' {...register("firstName", { required: true })} />
       <Label>Middle name</Label>
-      <Input className="mt-[1vh]" type='text' {...register("middleName", { required: true })} />
+      <Input className="mt-[1vh]" type='text' {...register("middleName")} />
       <Label>Last name</Label>
       <Input className="mt-[1vh]" type='text' {...register("lastName", { required: true })} />
       <Label>Email</Label>

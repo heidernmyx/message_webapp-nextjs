@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { cookies } from 'next/headers';
 import { CookieOptions } from '@supabase/ssr';
+import { saltAndHashPassword } from '@/app/utils/password';
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
-  console.log(email);
+
+  console.log(password);
+  console.log(saltAndHashPassword(password));
   let { data, error } = await supabase.auth.signInWithPassword({
     email: email,
     password: password,
@@ -28,9 +31,6 @@ export async function POST(req: NextRequest) {
     };
 
     const cookieStore = cookies();
-    cookieStore.set('user_id', id, cookieOptions);
-    cookieStore.set('email', email, cookieOptions);
-    cookieStore.set('role', role, cookieOptions);
 
     if (authToken) {
       cookieStore.set('access_token', authToken, cookieOptions);

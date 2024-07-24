@@ -315,7 +315,7 @@ const DashboardContent: FC<DashboardProps> = ( {username} ) => {
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="flex p-[0.6vw] w-auto h-[7vh] rounded-2xl">
+              <Button variant="secondary" size="icon" className="flex my-[0.2vw] p-[0.6vw] w-auto h-[7vh] rounded-2xl">
                   <Avatar className="mr-1">
                     {/* Placeholder image */}
                     <AvatarImage src="https://qehuvczvazgtcxjwlkdq.supabase.co/storage/v1/object/public/avatars/profile/ae86.gif"/>

@@ -2,31 +2,22 @@
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/app/components/ui/button";
-import { ModeToggle } from "@/app/components/ui/mode-toggle";
-import FormTitle from "@/app/components/form_title";
+import { Button } from "../../components/ui/button";
+import { ModeToggle } from "../../components/ui/mode-toggle";
+import FormTitle from "@/components/form_title";
 import { Label } from "@radix-ui/react-label";
-import { Input } from "@/app/components/ui/input";
+import { Input } from "../../components/ui/input";
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
+import { loginSchema } from '@/lib/zod';
+import { signIn } from 'next-auth/react';
 
-
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(0, "Password must be 4 characters long")
-});
 
 type LoginInput = z.infer<typeof loginSchema>;
 
-
-// interface Result {
-//   status: number
-//   aud: string
-// }
-
-const Login: React.FC = () => {
+const Login: React.FC = () => { 
   const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<LoginInput>({
     resolver: zodResolver(loginSchema)
   });
@@ -34,30 +25,35 @@ const Login: React.FC = () => {
   const addcss_loadingBg = isSubmitting ? "cursor-wait" : "hover:bg-opacity-35";
   const loginButtoncss = `w-[100%] border-[1.5px] rounded h-[6vh] ${addcss_loadingBg}`;
 
-
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+
+      // const response = await fetch('/api/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(data)
+      // })
+
+      const response = await signIn('credentials', {
+        email: data.email,
+        password: data.password
       })
       
-      const result = await response.json();
-      console.log(result);  
-      const { data: userData, error} = result
-  
+      // const result = await response.json();
+      // console.log(result);  
+      // const { data: userData, error} = result
+      console.log(response)
 
-      if (error) {
-        const { message, status} = error;
-        console.log(error)
-        setLoginMessage(message)
+      if (response!.error) {
+        // const { message, status} = error;
+        console.log(response!.error)
+        setLoginMessage('Invalid Credentials')
       }
-      else if (userData) {
-        const { id, aud, role, email } = userData;
-        console.log(userData)
+      else if (response?.ok) {
+        // const { id, aud, role, email } = userData;
+        // console.log(userData)
         window.location.reload();
       }
     } catch (err) {

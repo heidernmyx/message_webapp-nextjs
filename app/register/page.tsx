@@ -2,11 +2,11 @@ import React from 'react'
 
 import Link from 'next/link'
 import { z } from 'zod';
-import FormTitle from '../components/form_title';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
-import Form_input from '../components/form_input';
-import { ModeToggle } from '../components/ui/mode-toggle';
+import FormTitle from '../../components/form_title';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
+import Form_input from '../../components/form_input';
+import { ModeToggle } from '../../components/ui/mode-toggle';
 
 const Register = () => {
 

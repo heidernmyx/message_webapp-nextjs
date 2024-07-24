@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase, servicerole } from '@/lib/supabase'
+import { verifyPassword, saltAndHashPassword } from '@/app/utils/password'
 
 interface formData{
   email: string
@@ -23,32 +24,21 @@ export async function POST(req: NextRequest) {
 
   let id: string| any;
   let creationDate: string | any;
-  // try {
-  //   const { data, error} = await supabase
-  //   .from('tbl_account')
-  //   .select()
-  // } catch (error) {
-    
-  // }
 
   try {
     let { data, error } = await supabase.auth.signUp({
       email: email,
       password: password
     })
-    console.log("Result is: ",data)
-    console.log("Error is", error)
 
     id = data.user?.id
-    // id = "c0c8e31b-48b9-4260-a046-2a7fafda7644"
-    // creationDate = data.user?.created_at 
     
     if (error) {
       // console.log(error.message)
       return NextResponse.json({error: {message: error.message}})
     }
     else if (id) { 
-      handler(id, email)
+      handler(id, email, username, firstName, middleName, lastName, gender, birthdate)
     }
     console.log(id)
   } catch (error) {
@@ -58,9 +48,14 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ message: "Success"})
 }
 
-async function handler(id: string, email: string) {
+async function handler(id: string, email: string,
+  username: string, firstName: string,
+  middleName: string, lastName: string,
+  gender: string, birthdate: Date) {
   try {
-    const { data, error } = await servicerole
+
+    console.log(true)
+    const { data: accountData, error: accountError } = await servicerole
     .from('tbl_account')
     .insert([
       { email: email,
@@ -69,34 +64,42 @@ async function handler(id: string, email: string) {
     ])
     .select()
     
-// const { data, error } = await supabase
-// .from('tbl_account')
-// .insert([
-//   { some_column: 'someValue', other_column: 'otherValue' },
-// ])
-// .select()
-        
-
-    if (data) {
-      console.log(data)
+    if (accountData) {
+      console.log(accountData)
       // return NextResponse.json({data: {message: data.}})
     }
-    else if (error){
-      console.log(error)
+    else if (accountError){
+      console.log(accountError)
     //   ! insert or update on table "tbl_account" violates foreign key constraint "tbl_account_account_id_fkey
     }
     // ! message: 'new row violates row-level security policy for table "tbl_account"'
-    // {
-    //   code: '23503',
-    //   details: 'Key is not present in table "identities".',
-    //   hint: null,
-    //   message: 
-    //     'insert or update on table "tbl_account" violates foreign key constraint "tbl_account_account_id_fkey"'
+
+    const { data: profileData, error: profileError } = await supabase
+    .from('tbl_profile')
+    .insert([
+      { account_id: 'someValue', fname: '', mname: '', lname: '', gender: '', birthdate:  },
+    ])
+    .select()
+
+    // console.log(profileData);
+    // console.log(profileError);
+    
+    // if (!profileData || profileError) {
+
+    // }
+    // else if (profileData) {
+
     // }
 
   } catch (err) {
     console.log(err)
   }
   
+
+  try {
+    
+  } catch (err) {
+    
+  }
   return
 }

@@ -11,16 +11,16 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
-import { Badge } from "../components/ui/badge"
-import { Button } from "../components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar"
+import { Badge } from "../../components/ui/badge"
+import { Button } from "../../components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../components/ui/card"
+} from "../../components/ui/card"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,9 +28,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../components/ui/dropdown-menu"
-import { Input } from "../components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
+} from "../../components/ui/dropdown-menu"
+import { Input } from "../../components/ui/input"
+import { Sheet, SheetContent, SheetTrigger } from "../../components/ui/sheet"
 
 function Dashboard() {
   return (

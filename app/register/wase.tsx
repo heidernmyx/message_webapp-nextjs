@@ -32,7 +32,7 @@ import { Input } from "../components/ui/input";
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "../components/ui/button"
 import { Calendar } from "../components/ui/calendar"
-import FormTitle from "../components/form_title";
+import FormTitle from "../../components/form_title";
 // import Cat_gif from "";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
