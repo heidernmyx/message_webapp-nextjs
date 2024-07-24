@@ -58,9 +58,9 @@ async function handler(id: string, email: string,
     const { data: accountData, error: accountError } = await servicerole
     .from('tbl_account')
     .insert([
-      { email: email,
-        account_id: id
-      }
+      { account_id: id,
+        email: email,
+        account_username: username }
     ])
     .select()
     
@@ -77,19 +77,24 @@ async function handler(id: string, email: string,
     const { data: profileData, error: profileError } = await supabase
     .from('tbl_profile')
     .insert([
-      { account_id: 'someValue', fname: '', mname: '', lname: '', gender: '', birthdate:  },
+      { account_id: id, 
+        fname: firstName, 
+        mname: middleName, 
+        lname: lastName, 
+        gender: gender, 
+        birthdate: birthdate },
     ])
     .select()
 
-    // console.log(profileData);
-    // console.log(profileError);
+    console.log(profileData);
+    console.log(profileError);
     
-    // if (!profileData || profileError) {
+    if (!profileData || profileError) {
 
-    // }
-    // else if (profileData) {
+    }
+    else if (profileData) {
 
-    // }
+    }
 
   } catch (err) {
     console.log(err)

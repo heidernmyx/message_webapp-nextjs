@@ -2,9 +2,7 @@ import NextAuth from "next-auth";
 import { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 // Your own logic for dealing with plaintext password strings; be careful!
-import { saltAndHashPassword, verifyPassword } from "../../../utils/password";
 import { supabase } from "@/lib/supabase";
-import { verify } from "crypto";
 
 const authOptions: NextAuthOptions = {
   providers: [
