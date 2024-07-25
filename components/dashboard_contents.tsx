@@ -59,14 +59,19 @@ import FriendList from "../components/friedlist"
 import { useContext, useEffect, useState, useRef } from "react"
 import Name from "../components/name"
 import { FC } from "react"
+import { SessionProvider, useSession } from "next-auth/react"
+import Username from "./username"
 // import { cookies } from "next/headers"
 
-interface DashboardProps {
-  username: string
-}
+// interface DashboardProps {
+//   username: string
+// }
 
-const DashboardContent: FC<DashboardProps> = ( {username} ) => {
+const DashboardContent: FC = ( ) => {
 
+
+  // const { data: session } = useSession();
+  // console.log(session)
   // const cookiesStored = cookies();
   // const usersessionName = cookiesStored.get("email");
 
@@ -114,6 +119,7 @@ const DashboardContent: FC<DashboardProps> = ( {username} ) => {
   // }, []);
 
   return (
+    <SessionProvider>
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
@@ -325,7 +331,7 @@ const DashboardContent: FC<DashboardProps> = ( {username} ) => {
                       <span className="sr-only">Toggle user menu</span>
                     </AvatarFallback>
                   </Avatar>
-                  <>{username}</>
+                  <Username/>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -364,6 +370,7 @@ const DashboardContent: FC<DashboardProps> = ( {username} ) => {
         </main>
       </div>
     </div>
+    </SessionProvider>
   )
 }
 

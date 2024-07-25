@@ -4,29 +4,31 @@ import Credentials from "next-auth/providers/credentials";
 // Your own logic for dealing with plaintext password strings; be careful!
 import { supabase } from "@/lib/supabase";
 
+
 const authOptions: NextAuthOptions = {
   providers: [
     Credentials({
       name: 'credentials',
       credentials: {},
       authorize: async (credentials) => {
-        console.log('inside auth');
-        const { email, password } = credentials as { email: string; password: string };
 
+        const { email, password } = credentials as { email: string; password: string };
         let { data, error } = await supabase.auth.signInWithPassword({
           email: email,
           password: password,
         });
 
-        if (!data || error) {
-          throw new Error("User not found.");
-        } else if (data) {
-          console.log()
+        const { user } = data;
+
+        if (error) {
           return null
         }
 
-        // Return null if user is not authenticated
-        return null;
+        return {
+          id: user!.id,
+          email: user!.email,
+          role: user!.role,
+        };
       },
     }),
   ],
@@ -35,14 +37,20 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-      if (token.user) {
-        session.user = token.user;
+      if (token) {
+        // console.log(token)
+        console.log(session)
+        // session.user!.email = token.email; // Add user email to the session
       }
       return session;
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, account }) {
+      console.log(user)
+      console.log(account)
+      console.log(token)
       if (user) {
-        token.user = user;
+        token.id = user.id;
+        token.email = user.email;
       }
       return token;
     },
